@@ -18,11 +18,11 @@ const float pi = 3.14159265359;
 class ArmSegment {
 private:
 	float length; //length of arm segment
-	vec3* pivotJoint;
+	vec3* pivotJoint; //point around which segment rotates
 	vec3* endJoint;
-	ArmSegment* nextSegment;
-	std::vector<vec3*> points;
-	std::vector<int> indices;
+	ArmSegment* nextSegment; //pointer to next segment
+	std::vector<vec3*> points; //list of vertices of component
+	std::vector<int> indices; //list of indices in points list
 
 public:
 	ArmSegment(vec3*& pivot, vec3*& end);

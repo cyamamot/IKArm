@@ -2,12 +2,13 @@
 
 Arm::Arm() {
 	vec3* base = new vec3(0.0f, 0.0f, 0.0f);
-	baseCoord= *base;
+	baseCoord = *base;
 	vec3* elbow = new vec3(0.0f, 1.0f, 0.0f);
 	vec3* wrist = new vec3(0.0f, 1.75f, 0.0f);
 	vec3* knuckle = new vec3(0.0f, 2.5f, 0.0f);
 	vec3* fingers = new vec3(0.0f, 3.0f, 0.0f);
 	E = fingers;
+	//create each segment of full arm
 	armBase = new ArmSegment(base, elbow);
 	upperArm = new ArmSegment(elbow, wrist);
 	hand = new ArmSegment(wrist, knuckle);

@@ -3,31 +3,32 @@
 TargetPoint::TargetPoint() {
 	currPos = new vec3(0.0f, 3.0f, 0.0f);
 	gridPos = new vec3(0.0f, 0.0f, 0.0f);
+	moveAmount = 0.05f;
 }
 float TargetPoint::getPos(int i) {
 	return (*currPos)[i];
 }
 void TargetPoint::plusX() {
-	*currPos = *currPos + vec3(0.05, 0.0, 0.0);
-	*gridPos = *gridPos + vec3(0.05, 0.0, 0.0);
+	*currPos = *currPos + vec3(moveAmount, 0.0, 0.0);
+	*gridPos = *gridPos + vec3(moveAmount, 0.0, 0.0);
 }
 void TargetPoint::minusX() {
-	*currPos = *currPos - vec3(0.05, 0.0, 0.0);
-	*gridPos = *gridPos - vec3(0.05, 0.0, 0.0);
+	*currPos = *currPos - vec3(moveAmount, 0.0, 0.0);
+	*gridPos = *gridPos - vec3(moveAmount, 0.0, 0.0);
 }
 void TargetPoint::plusY() {
-	*currPos = *currPos + vec3(0.0, 0.05, 0.0);
+	*currPos = *currPos + vec3(0.0, moveAmount, 0.0);
 }
 void TargetPoint::minusY() {
-	*currPos = *currPos - vec3(0.0, 0.05, 0.0);
+	*currPos = *currPos - vec3(0.0, moveAmount, 0.0);
 }
 void TargetPoint::plusZ() {
-	*currPos = *currPos + vec3(0.0, 0.0, 0.05);
-	*gridPos = *gridPos + vec3(0.0, 0.0, 0.05);
+	*currPos = *currPos + vec3(0.0, 0.0, moveAmount);
+	*gridPos = *gridPos + vec3(0.0, 0.0, moveAmount);
 }
 void TargetPoint::minusZ() {
-	*currPos = *currPos - vec3(0.0, 0.0, 0.05);
-	*gridPos = *gridPos - vec3(0.0, 0.0, 0.05);
+	*currPos = *currPos - vec3(0.0, 0.0, moveAmount);
+	*gridPos = *gridPos - vec3(0.0, 0.0, moveAmount);
 }
 void TargetPoint::draw() {
 	glPointSize(10);

@@ -27,7 +27,7 @@ float targetX = -1.0f;
 float targetY = -1.0f;
 float targetZ = -1.0f;
 Arm* arm;
-std::vector<vec3*> grid; ////////////////turn into its own class
+std::vector<vec3*> grid; 
 std::vector<int> gridIndices;
 TargetPoint* tp;
 std::queue<vec3> interpolatedPoints;
@@ -154,6 +154,18 @@ void idle() {
 		glutPostRedisplay();
 	}
 }
+void printInstructions() {
+	std::cout << "Numpad Controls:" << std::endl;
+	std::cout << "1 = left" << std::endl;
+	std::cout << "3 = right" << std::endl;
+	std::cout << "2 = forward" << std::endl;
+	std::cout << "5 = backward" << std::endl;
+	std::cout << "4 = down" << std::endl;
+	std::cout << "6 = up" << std::endl;
+	std::cout << "7 = follows circular path around current point" << std::endl;
+	std::cout << std::endl;
+	std::cout << "IKArm follows line on screen - green if point is reachable by arm, red if point is unreachable" << std::endl;
+}
 int main(int argc, char* argv[]) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
@@ -162,6 +174,7 @@ int main(int argc, char* argv[]) {
 	if (GLEW_OK != err) {
 		std::cerr << "Error: " << glewGetString(err) << std::endl;
 	}
+	printInstructions();
 	initialize();
 	glutKeyboardFunc(keyboard);
 	glutDisplayFunc(display);

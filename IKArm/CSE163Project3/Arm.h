@@ -15,9 +15,9 @@ class Arm {
 private:
 	std::vector<vec3*> jointList;
 	std::vector<ArmSegment*> segmentList;
-	vec3* E;
-	vec3 D;
-	vec3 baseCoord;
+	vec3* E; //endpoint of arm
+	vec3 D; //targetpoint
+	vec3 baseCoord; //base of arm
 	ArmSegment* armBase;
 	ArmSegment* upperArm;
 	ArmSegment* hand;

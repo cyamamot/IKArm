@@ -12,6 +12,7 @@ class TargetPoint {
 private:
 	vec3* currPos;
 	vec3* gridPos;
+	float moveAmount;
 
 public:
 	TargetPoint();

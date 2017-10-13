@@ -10,13 +10,14 @@ ArmSegment::ArmSegment(vec3*& pivot, vec3*& end) {
 	vec3* m2 = new vec3(midpoint[0] - 0.1f, midpoint[1], midpoint[2]);
 	vec3* m3 = new vec3(midpoint[0], midpoint[1], midpoint[2] + 0.1f);
 	vec3* m4 = new vec3(midpoint[0], midpoint[1], midpoint[2] - 0.1f);
+	//populate list of vertices used in each arm segment
 	points.push_back(pivotJoint);
 	points.push_back(endJoint);
 	points.push_back(m1);
 	points.push_back(m2);
 	points.push_back(m3);
 	points.push_back(m4);
-
+	//populate list of indices comprising each triangle face in order
 	indices.push_back(0);
 	indices.push_back(2);
 	indices.push_back(1);
