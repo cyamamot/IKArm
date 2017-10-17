@@ -1,6 +1,7 @@
 #include "Arm.h"
 
-Arm::Arm() {
+Arm::Arm()
+{
 	//Each segment of the arm hard coded
 	vec3* base = new vec3(0.0f, 0.0f, 0.0f);
 	baseCoord = *base;
@@ -31,29 +32,38 @@ Arm::Arm() {
 	jointList.push_back(knuckle);
 	jointList.push_back(fingers);
 }
-void Arm::drawObject() {
+
+void Arm::drawObject()
+{
 	glLineWidth(2);
 	glColor3f(1.0, 0.0, 0.0);
-	for (int i = 0; i < segmentList.size(); i++) {
+	for (int i = 0; i < segmentList.size(); i++)
+	{
 		segmentList[i]->draw();
 	}
 }
-void Arm::IKToTarget(float x, float y, float z) {
+
+void Arm::IKToTarget(float x, float y, float z) 
+{
 	D = vec3(x, y, z);
 	//if target point physically cannot be reached
-	if (distance(D, baseCoord) > totalLength) {
+	if (distance(D, baseCoord) > totalLength)
+	{
 		return;
 	}
 	int a = 0;
 	//Performs CCD until error between arm tip and target is < 0.01 OR 5 cycles have been completed
-	while (distance(*E, D) > 0.01 && a < 5) {
-		for (int i = segmentList.size() - 1; i >= 0; i--) {
+	while (distance(*E, D) > 0.01 && a < 5)
+	{
+		for (int i = segmentList.size() - 1; i >= 0; i--) 
+		{
 			vec3 R = *(segmentList[i]->getPivotJoint());
 			vec3 ER = normalize(*E - R);
 			vec3 DR = normalize(D - R);
 			//gets axis along which segment must rotate around
 			vec3 axis = normalize(cross(ER, DR));
-			if (glm::isnan(axis[0]) || glm::isnan(axis[1]) || glm::isnan(axis[2])) {
+			if (glm::isnan(axis[0]) || glm::isnan(axis[1]) || glm::isnan(axis[2]))
+			{
 				vec3 temp = vec3(ER[0] - 1.0f, ER[1] - 1.0f, ER[2] - 1.0f);
 				axis = cross(ER, temp);
 			}
@@ -61,7 +71,8 @@ void Arm::IKToTarget(float x, float y, float z) {
 			float theta = (acos(dot(ER, DR)));
 			if (glm::isnan(theta)) theta = 1.0f;
 			//if angle is negative, invert angle and axis
-			if (axis[2] < 0.0f) {
+			if (axis[2] < 0.0f)
+			{
 				theta = -theta;
 				axis = -axis;
 			}
@@ -73,6 +84,8 @@ void Arm::IKToTarget(float x, float y, float z) {
 		a++;
 	}
 }
-vec3 Arm::getTipDirection() {
+
+vec3 Arm::getTipDirection()
+{
 	return *jointList[jointList.size() - 1] - *jointList[jointList.size() - 2];
 }

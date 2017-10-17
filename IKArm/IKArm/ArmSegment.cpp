@@ -1,7 +1,8 @@
 #include "ArmSegment.h"
 
 
-ArmSegment::ArmSegment(vec3*& pivot, vec3*& end) {
+ArmSegment::ArmSegment(vec3*& pivot, vec3*& end)
+{
 	pivotJoint = pivot;
 	endJoint = end;
 	length = distance(*endJoint, *pivotJoint);
@@ -39,21 +40,32 @@ ArmSegment::ArmSegment(vec3*& pivot, vec3*& end) {
 	indices.push_back(5);
 	indices.push_back(2);
 }
-void ArmSegment::setNextSegment(ArmSegment*& next) {
+
+void ArmSegment::setNextSegment(ArmSegment*& next)
+{
 	nextSegment = next;
 }
-float ArmSegment::getLength() {
+
+float ArmSegment::getLength() 
+{
 	return length;
 }
-vec3* ArmSegment::getPivotJoint() {
+
+vec3* ArmSegment::getPivotJoint()
+{
 	return pivotJoint;
 }
-vec3* ArmSegment::getEndJoint() {
+
+vec3* ArmSegment::getEndJoint()
+{
 	return endJoint;
 }
-void ArmSegment::rotate(vec3 R, mat4x4& rotMat, mat4x4& transMat) {
+
+void ArmSegment::rotate(vec3 R, mat4x4& rotMat, mat4x4& transMat) 
+{
 	//properly rotates all points comprising the segment by applying -transMat, then rotMat, then transMat to the point locations
-	for (int i = 1; i < points.size(); i++) {
+	for (int i = 1; i < points.size(); i++) 
+	{
 		vec3 temp = (transMat * rotMat * inverse(transMat) * vec4(*points[i], 1));
 		*points[i] = { temp[0], temp[1], temp[2] };
 	}
@@ -61,8 +73,11 @@ void ArmSegment::rotate(vec3 R, mat4x4& rotMat, mat4x4& transMat) {
 	//apply same rotation and translation to all child segments
 	if (nextSegment != NULL) nextSegment->rotate(R, rotMat, transMat);
 }
-void ArmSegment::draw() {
-	for (int i = 0; i < indices.size() - 1; i++) {
+
+void ArmSegment::draw() 
+{
+	for (int i = 0; i < indices.size() - 1; i++) 
+	{
 		glBegin(GL_LINES);
 		vec3 bottom = *points[indices[i]];
 		vec3 top = *points[indices[i + 1]];

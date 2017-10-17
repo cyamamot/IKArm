@@ -33,15 +33,19 @@ TargetPoint* tp;
 std::queue<vec3> interpolatedPoints;
 
 
-void reshape(int width, int height) {
+void reshape(int width, int height) 
+{
 	w = width;
 	h = height;
 	glViewport(0, 0, w, h);
 }
-void drawGrid() {
+
+void drawGrid()
+{
 	glLineWidth(1.0f);
 	glColor3f(0.0f, 0.0f, 0.0f);
-	for (unsigned int i = 0; i < gridIndices.size() - 1; i += 2) {
+	for (unsigned int i = 0; i < gridIndices.size() - 1; i += 2)
+	{
 		glBegin(GL_LINES);
 		vec3 bottom = *grid[gridIndices[i]];
 		vec3 top = *grid[gridIndices[i + 1]];
@@ -50,7 +54,9 @@ void drawGrid() {
 		glEnd();
 	}
 }
-void initialize() {
+
+void initialize() 
+{
 	glEnable(GL_DEPTH_TEST);
 	arm = new Arm();
 	tp = new TargetPoint();
@@ -72,7 +78,9 @@ void initialize() {
 	grid.push_back(m18); grid.push_back(m19); grid.push_back(m20); grid.push_back(m21); grid.push_back(m22); grid.push_back(m23);
 	gridIndices = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 0, 12, 1, 13 };
 }
-void display() {
+
+void display() 
+{
 	glClearColor(0, 0, 1, 0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_PROJECTION);
@@ -85,8 +93,11 @@ void display() {
 	glutSwapBuffers();
 	glutPostRedisplay();
 }
-void keyboard(unsigned char key, int x, int y) {
-	switch (key) {
+
+void keyboard(unsigned char key, int x, int y) 
+{
+	switch (key) 
+	{
 	case GLFW_KEY_4:
 	{
 		tp->minusY();
@@ -135,7 +146,8 @@ void keyboard(unsigned char key, int x, int y) {
 		vec3 temp = normalize(vec3(tipDir[0] - 1.0, tipDir[1] - 1.0, tipDir[2] - 1.0));
 		vec3 a = cross(tipDir, temp);
 		vec3 b = cross(tipDir, a);
-		for (float i = 0; i <= 2 * pi; i += pi / 1000.0f) {
+		for (float i = 0; i <= 2 * pi; i += pi / 1000.0f) 
+		{
 			float x = tp->getPos(0) + (0.75f * cos(i) * a[0]) + (0.75f * sin(i) * b[0]);
 			float y = tp->getPos(1) + (0.75f *cos(i) * a[1]) + (0.75f * sin(i) * b[1]);
 			float z = tp->getPos(2) + (0.75f * cos(i) * a[2]) + (0.75f * sin(i) * b[2]);
@@ -145,8 +157,11 @@ void keyboard(unsigned char key, int x, int y) {
 	}
 	}
 }
-void idle() {
-	if (!interpolatedPoints.empty()) {
+
+void idle() 
+{
+	if (!interpolatedPoints.empty())
+	{
 		vec3 temp = interpolatedPoints.front();
 		interpolatedPoints.pop();
 		tp->set(temp);
@@ -154,7 +169,9 @@ void idle() {
 		glutPostRedisplay();
 	}
 }
-void printInstructions() {
+
+void printInstructions() 
+{
 	std::cout << "Numpad Controls:" << std::endl;
 	std::cout << "1 = left" << std::endl;
 	std::cout << "3 = right" << std::endl;
@@ -166,12 +183,15 @@ void printInstructions() {
 	std::cout << std::endl;
 	std::cout << "IKArm follows line on screen - green if point is reachable by arm, red if point is unreachable" << std::endl;
 }
-int main(int argc, char* argv[]) {
+
+int main(int argc, char* argv[]) 
+{
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
 	glutCreateWindow("IKArm");
 	GLenum err = glewInit();
-	if (GLEW_OK != err) {
+	if (GLEW_OK != err)
+	{
 		std::cerr << "Error: " << glewGetString(err) << std::endl;
 	}
 	printInstructions();

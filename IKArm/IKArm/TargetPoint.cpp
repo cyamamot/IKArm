@@ -1,36 +1,53 @@
 #include "TargetPoint.h"
 
-TargetPoint::TargetPoint() {
+TargetPoint::TargetPoint() 
+{
 	currPos = new vec3(0.0f, 3.0f, 0.0f);
 	gridPos = new vec3(0.0f, 0.0f, 0.0f);
 	moveAmount = 0.05f;
 }
-float TargetPoint::getPos(int i) {
+
+float TargetPoint::getPos(int i)
+{
 	return (*currPos)[i];
 }
-void TargetPoint::plusX() {
+
+void TargetPoint::plusX() 
+{
 	*currPos = *currPos + vec3(moveAmount, 0.0, 0.0);
 	*gridPos = *gridPos + vec3(moveAmount, 0.0, 0.0);
 }
-void TargetPoint::minusX() {
+
+void TargetPoint::minusX()
+{
 	*currPos = *currPos - vec3(moveAmount, 0.0, 0.0);
 	*gridPos = *gridPos - vec3(moveAmount, 0.0, 0.0);
 }
-void TargetPoint::plusY() {
+
+void TargetPoint::plusY()
+{
 	*currPos = *currPos + vec3(0.0, moveAmount, 0.0);
 }
-void TargetPoint::minusY() {
+
+void TargetPoint::minusY() 
+{
 	*currPos = *currPos - vec3(0.0, moveAmount, 0.0);
 }
-void TargetPoint::plusZ() {
+
+void TargetPoint::plusZ() 
+{
 	*currPos = *currPos + vec3(0.0, 0.0, moveAmount);
 	*gridPos = *gridPos + vec3(0.0, 0.0, moveAmount);
 }
-void TargetPoint::minusZ() {
+
+void TargetPoint::minusZ() 
+{
 	*currPos = *currPos - vec3(0.0, 0.0, moveAmount);
 	*gridPos = *gridPos - vec3(0.0, 0.0, moveAmount);
 }
-void TargetPoint::draw() {
+
+void TargetPoint::draw() 
+{
 	glPointSize(10);
 	glColor3f(0.0, 1.0, 0.0);
 	if (distance(*currPos, vec3(0, 0, 0)) > 3.0f) glColor3f(1.0, 0.0, 0.0);
@@ -46,7 +63,9 @@ void TargetPoint::draw() {
 	glVertex3f((*gridPos)[0], (*gridPos)[1], (*gridPos)[2]);
 	glEnd();
 }
-void TargetPoint::set(vec3 pos) {
+
+void TargetPoint::set(vec3 pos)
+{
 	*currPos = pos;
 	*gridPos = vec3(pos[0], 0.0f, pos[2]);
 }

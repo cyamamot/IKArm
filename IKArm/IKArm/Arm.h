@@ -16,7 +16,8 @@ Segments are parented bottom up so rotation along one segment moves all child se
 typedef glm::vec3 vec3;
 typedef glm::mat4x4 mat4x4;
 
-class Arm {
+class Arm 
+{
 private:
 	//List of all joints in arm
 	std::vector<vec3*> jointList;

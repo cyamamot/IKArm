@@ -13,7 +13,8 @@ Shows target in 3D space as well as its corresponding 2D location
 
 typedef glm::vec3 vec3;
 
-class TargetPoint {
+class TargetPoint 
+{
 private:
 	//actual position in 3D space
 	vec3* currPos;

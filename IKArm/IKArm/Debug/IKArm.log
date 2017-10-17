@@ -1,12 +1,10 @@
-﻿  Main.cpp
+﻿  TargetPoint.cpp
+  Main.cpp
   ArmSegment.cpp
-c:\users\cody\documents\repo\ikarmproject\ikarm\ikarm\armsegment.cpp(56): warning C4018: '<': signed/unsigned mismatch
-c:\users\cody\documents\repo\ikarmproject\ikarm\ikarm\armsegment.cpp(65): warning C4018: '<': signed/unsigned mismatch
+c:\users\cody\documents\repo\ikarmproject\ikarm\ikarm\armsegment.cpp(67): warning C4018: '<': signed/unsigned mismatch
+c:\users\cody\documents\repo\ikarmproject\ikarm\ikarm\armsegment.cpp(79): warning C4018: '<': signed/unsigned mismatch
   Arm.cpp
-c:\users\cody\documents\repo\ikarmproject\ikarm\ikarm\arm.cpp(37): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Compiling...
-  TargetPoint.cpp
+c:\users\cody\documents\repo\ikarmproject\ikarm\ikarm\arm.cpp(40): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
   IKArm.vcxproj -> C:\Users\Cody\Documents\repo\IKArmProject\IKArm\Debug\IKArm.exe
   IKArm.vcxproj -> C:\Users\Cody\Documents\repo\IKArmProject\IKArm\Debug\IKArm.pdb (Partial PDB)

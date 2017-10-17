@@ -20,7 +20,8 @@ typedef glm::mat3x3 mat3x3;
 
 const float pi = 3.14159265359;
 
-class ArmSegment {
+class ArmSegment 
+{
 private:
 	float length; //length of arm segment
 	vec3* pivotJoint; //point around which segment rotates
